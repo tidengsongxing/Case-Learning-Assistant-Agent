@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>病例学习智能体 · 诊断学 / 病理学 / 内科学</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">病</div>
+      <div class="brand-text">
+        <h1>病例学习智能体</h1>
+        <p>诊断学 · 病理学 · 内科学　|　自动命题 · 错因归因</p>
+      </div>
+    </div>
+    <div class="status" id="modelStatus">
+      <span class="dot"></span>
+      <span>正在检查模型连接…</span>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <aside class="panel setup">
+      <h2 class="panel-title">出题设置</h2>
+
+      <label class="field">
+        <span class="field-label">课程</span>
+        <select id="courseSelect"></select>
+      </label>
+
+      <div class="field">
+        <span class="field-label">练习模式</span>
+        <div class="segmented" id="modeSelect">
+          <button type="button" class="seg-item is-active" data-mode="targeted">定向练习</button>
+          <button type="button" class="seg-item" data-mode="random">随机测验</button>
+        </div>
+        <p class="field-hint" id="modeHint">选择一个病种，针对性地反复练习。</p>
+      </div>
+
+      <div class="field">
+        <span class="field-label">题型</span>
+        <div class="segmented" id="typeSelect">
+          <button type="button" class="seg-item is-active" data-type="case">病例题</button>
+          <button type="button" class="seg-item" data-type="knowledge">知识点题</button>
+        </div>
+        <p class="field-hint" id="typeHint">给出完整的病例，选出最可能的诊断。</p>
+      </div>
+
+      <div class="field" id="answerTypeField" style="display:none">
+        <span class="field-label">作答方式</span>
+        <div class="segmented" id="answerTypeSelect">
+          <button type="button" class="seg-item is-active" data-answer="single">单选</button>
+          <button type="button" class="seg-item" data-answer="multiple">多选</button>
+        </div>
+      </div>
+
+      <label class="field" id="diseaseField">
+        <span class="field-label">病种</span>
+        <select id="diseaseSelect"></select>
+      </label>
+
+      <label class="field">
+        <span class="field-label">难度</span>
+        <select id="difficultySelect"></select>
+      </label>
+
+      <button type="button" class="btn btn-primary" id="generateBtn">生成题目</button>
+
+      <p class="fine-print">
+        病例由 DeepSeek 依据本地疾病卡片生成，仅用于教学练习，不可用于临床诊断。
+      </p>
+    </aside>
+
+    <section class="panel stage" id="stage">
+      <!-- 由 app.js 渲染 -->
+    </section>
+
+    <aside class="panel profile">
+      <h2 class="panel-title">学习画像</h2>
+      <div class="profile-stats" id="profileStats"></div>
+      <h3 class="sub-title">错因分布</h3>
+      <div class="tag-bars" id="tagBars"></div>
+      <button type="button" class="btn btn-ghost btn-small" id="resetProfileBtn">清空记录</button>
+    </aside>
+
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
