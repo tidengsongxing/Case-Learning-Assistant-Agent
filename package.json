@@ -1,0 +1,14 @@
+{
+  "name": "case-learning-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "面向大二医学生的病例题生成与错因分析智能体（诊断学 / 病理学 / 内科学）",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
